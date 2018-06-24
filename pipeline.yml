@@ -44,16 +44,16 @@ Resources:
               - "s3:GetObject"
               - "s3:GetObjectVersion"
               - "s3:GetBucketVersioning"
-              - "codecommit:CancelUploadArchive"
-              - "codecommit:GetBranch"
-              - "codecommit:GetCommit"
-              - "codecommit:GetUploadArchiveStatus"
-              - "codecommit:UploadArchive"
-              - "codedeploy:CreateDeployment"
-              - "codedeploy:GetApplicationRevision"
-              - "codedeploy:GetDeployment"
-              - "codedeploy:GetDeploymentConfig"
-              - "codedeploy:RegisterApplicationRevision"
+ #             - "codecommit:CancelUploadArchive"
+ #             - "codecommit:GetBranch"
+ #             - "codecommit:GetCommit"
+ #             - "codecommit:GetUploadArchiveStatus"
+ #             - "codecommit:UploadArchive"
+ #             - "codedeploy:CreateDeployment"
+ #             - "codedeploy:GetApplicationRevision"
+ #             - "codedeploy:GetDeployment"
+ #             - "codedeploy:GetDeploymentConfig"
+ #             - "codedeploy:RegisterApplicationRevision"
 #              - "elasticbeanstalk:*"
 #              - "ec2:*"
 #              - "elasticloadbalancing:*"
@@ -152,8 +152,8 @@ Resources:
   CodeDeployProject:
     Type: AWS::CodeBuild::Project
     Properties:
-      Name: !Join [ "-", [!Ref "AWS::StackName", "apiGWSampleDeploy"]]
-      Description: build project (and ci skeleton) for deploy gw sample
+      Name: !Join [ "-", [!Ref "AWS::StackName", "SLSDeploy"]]
+      Description: build project (and ci skeleton) for sls applications
       ServiceRole: !GetAtt CodeBuildServerlessRole.Arn
       Environment:
         Type: LINUX_CONTAINER
@@ -193,6 +193,7 @@ Resources:
               Configuration:
                 S3Bucket: !Ref MyArtifactBucket
                 S3ObjectKey: 'app.zip'
+                PollForSourceChanges: 'true'
               RunOrder: 1
         -
           Name: Deploy

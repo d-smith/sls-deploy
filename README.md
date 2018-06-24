@@ -13,3 +13,7 @@ To install, use the create-stack script. To deploy a serverless application:
 Notes:
 
 * You way need to adjust the policy in the stack based on the services created during the serverless deploy, or scale them back if you have environments where objects and related roles and policies are created in advance of application deploument.
+
+To do:
+
+* Update this to use the preferred method to trigger deploys (cloud watch events, etc.)
