@@ -31,12 +31,11 @@ Resources:
       Path: /
 
   CodePipelinePolicy:
-    Type: "AWS::IAM::Policy"
+    Type: "AWS::IAM::ManagedPolicy"
     DependsOn: 
       - CodePipelineServerlessRole
       - MyArtifactBucket
     Properties: 
-      PolicyName: "SLSCodePipelinePolicy"
       PolicyDocument: 
         Version: "2012-10-17"
         Statement: 
@@ -89,10 +88,9 @@ Resources:
       - arn:aws:iam::aws:policy/AWSStepFunctionsFullAccess
 
   CFPolicy:
-    Type: "AWS::IAM::Policy"
+    Type: "AWS::IAM::ManagedPolicy"
     DependsOn: CodeBuildServerlessRole
     Properties: 
-      PolicyName: "CFCodeBuild"
       PolicyDocument: 
         Version: "2012-10-17"
         Statement: 
@@ -109,10 +107,9 @@ Resources:
   # repo. You may need to tailor this to your situation.
   #
   SLSDeployPolicy:
-    Type: "AWS::IAM::Policy"
+    Type: "AWS::IAM::ManagedPolicy"
     DependsOn: CodeBuildServerlessRole
     Properties: 
-      PolicyName: "SLSDeployPolicy"
       PolicyDocument: 
         Version: "2012-10-17"
         Statement: 
