@@ -67,25 +67,6 @@ Resources:
             Action:
               - "cloudformation:CreateStack"
             Resource: "*"
-
-
-
-
-#              - "cloudwatch:*"
-#              - "s3:*"
-#              - "cloudformation:*"
-   #           - "iam:PassRole"
-  #            - "lambda:InvokeFunction"
- #             - "lambda:ListFunctions"
-#              - "codebuild:BatchGetBuilds"
-#              - "codebuild:StartBuild"
-#            Resource: "*"
-#          -
-#            Effect: "Allow"
-#            Action:
-#              - "s3:PutObject"
-#            Resource:
-#              - "arn:aws:s3:::codepipeline*"
       Roles:
         -
           Ref: "CodePipelineServerlessRole"
